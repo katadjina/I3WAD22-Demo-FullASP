@@ -1,0 +1,52 @@
+﻿@model LogementDetails
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Details</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.rue)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Prix)
+            </td>
+                        <td>
+                @Html.DisplayFor(model => model.email)
+            </td>
+            
+        </tr>
+
+    </tbody>
+</table>

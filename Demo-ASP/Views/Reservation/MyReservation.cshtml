@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Demo_ASP.Models.ReservationViewModels.ReservationListItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Mes reservations</h1>
+
+@if (TempData.ContainsKey("Error")) { 
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.logement.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.logement.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreAdultes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreEnfants)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescriptionCourte)
+                </td>
+                <td>
+                     @item.checkIn.ToShortDateString()
+                </td>
+                <td>
+                    @item.checkOut.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prix)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreAdultes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreEnfants)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Reservation_id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Reservation_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Reservation_id })
+                </td>
+            </tr>
+        }
+        
+
+    </tbody>
+</table>

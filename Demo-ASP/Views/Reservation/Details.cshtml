@@ -1,0 +1,93 @@
+﻿@model Demo_ASP.Models.ReservationViewModels.ReservationDetails
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Details logement</h1>
+
+<p>
+    <a asp-action="MyReservation">Index</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.logement.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.logement.rue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.logement.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.logement.Prix)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.logement.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.logement.rue)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.logement.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.logement.Prix)
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<h1>Details reservation</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.checkIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.checkOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreAdultes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreEnfants)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.checkIn.ToShortDateString()
+            </td>
+            <td>
+                @Model.checkOut.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.prix)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.nombreAdultes)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.nombreEnfants)
+            </td>
+        </tr>
+
+    </tbody>
+</table>

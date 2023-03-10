@@ -1,0 +1,61 @@
+﻿@model IEnumerable<LogementListItem>
+@inject SessionManager sessionManager
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste Des Logements</h1>
+
+@Html.ActionLink("Search logement by month of added", "SearchMonth") | @Html.ActionLink("Advanced Search", "SearchTwoDate")
+
+
+@if (TempData.ContainsKey("Error")) { 
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Client_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                    @Html.ActionLink("Details", "Details", new { id=item.Logement_id }) |
+                    @if (sessionManager.CurrentUser is null)
+                    {
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Reserver", "Create", "Reservation", new { id = item.Logement_id })
+
+                    }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

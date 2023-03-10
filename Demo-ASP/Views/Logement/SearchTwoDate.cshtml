@@ -1,0 +1,71 @@
+﻿@model Demo_ASP.Models.LogementViewModels.LogementSearch
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Advanced Search </h1>
+
+@if (TempData.ContainsKey("Error"))
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<div>
+    <form asp-action="SearchTwoDate">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="date_deb" class="control-label"></label>
+            <input asp-for="date_deb" class="form-control" />
+            <span asp-validation-for="date_deb" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="date_fin" class="control-label"></label>
+            <input asp-for="date_fin" class="form-control" />
+            <span asp-validation-for="date_fin" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Proprietaire
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.logements)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id=item.Logement_id }) |
+                    @Html.ActionLink("Reserver", "Create","Reservation", new { id=item.Logement_id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

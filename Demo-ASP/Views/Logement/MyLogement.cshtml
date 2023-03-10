@@ -1,0 +1,53 @@
+﻿@model IEnumerable<LogementListItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Mes annonces</h1>
+
+@if (TempData.ContainsKey("Error")) { 
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Logement_id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Logement_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Logement_id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

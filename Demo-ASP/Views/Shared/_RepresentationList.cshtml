@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DateTime>
+
+<ul>
+@foreach (DateTime repr in Model)
+{
+    <li>
+        <div>Date : 
+        <span>@repr.Date </span>
+        Heure : 
+        <span>@repr.TimeOfDay</span>
+        </div>
+    </li>
+}
+</ul>

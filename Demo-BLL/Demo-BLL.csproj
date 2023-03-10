@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>Demo_BLL</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Demo-Common\Demo-Common.csproj" />
+    <ProjectReference Include="..\Demo-DAL\Demo-DAL.csproj" />
+  </ItemGroup>
+
+</Project>
